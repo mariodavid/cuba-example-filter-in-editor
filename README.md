@@ -7,4 +7,4 @@ This example shows how to use a filter in an entity editor.
 ![entity-overview](https://github.com/mariodavid/cuba-example-filter-in-editor/blob/master/img/editor-overview.png)
 
 ## Editor Filtering (Payment Method)
-![filter-in-editor](https://github.com/mariodavid/cuba-example-filter-in-editor/blob/master/img/filter-in-editor.png)
+![filter-in-editor](https://github.com/mariodavid/cuba-example-filter-in-editor/blob/master/img/filtering-in-editor.png)
