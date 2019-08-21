@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.rtcab.cefie.web.screens.customer">
+    <data>
+        <instance id="customerDc"
+                  class="com.rtcab.cefie.entity.Customer"
+                  view="customer-view">
+            <loader/>
+        </instance>
+        <collection id="ordersDc"
+                    class="com.rtcab.cefie.entity.Order"
+                    view="order-view">
+            <loader id="ordersDl">
+                <query>
+                    <![CDATA[select e from cefie_Order e where e.customer = :customer]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ordersBox" spacing="true">
+        <form id="form" dataContainer="customerDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+        <groupBox id="ordersBox" caption="msg://com.rtcab.cefie.entity/Customer.orders" expand="ordersTable" spacing="true">
+            <filter id="filter"
+                    applyTo="ordersTable"
+                    dataLoader="ordersDl">
+                <properties include=".*"/>
+            </filter>
+            <groupTable id="ordersTable" dataContainer="ordersDc" width="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="orderDate"/>
+                    <column id="amount"/>
+                    <column id="paymentMethod"/>
+                </columns>
+                <rowsCount/>
+                <buttonsPanel>
+                    <button action="ordersTable.create"/>
+                    <button action="ordersTable.edit"/>
+                    <button action="ordersTable.remove"/>
+                </buttonsPanel>
+            </groupTable>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,4 @@
+-- begin CEFIE_ORDER
+alter table CEFIE_ORDER add constraint FK_CEFIE_ORDER_ON_CUSTOMER foreign key (CUSTOMER_ID) references CEFIE_CUSTOMER(ID)^
+create index IDX_CEFIE_ORDER_ON_CUSTOMER on CEFIE_ORDER (CUSTOMER_ID)^
+-- end CEFIE_ORDER
